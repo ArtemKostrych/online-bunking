@@ -40,31 +40,31 @@
 					<div class="container" style="margin-bottom: 100px;">
 						<div class="row" style="justify-content: center; align-items: center;">
 							<div class="col-4">
-								<form id="register" method="post" th:action="@{/signup}">
+								<form id="user" method="post" th:action="@{/signup}">
 								   <div class="form-group" style="margin-top: 70px;">
-									  <label for="inputFirstname">First name</label> 
-									  <input type="text" class="form-control" id="inputFirstName" aria-describedby="fNameHelp" placeholder="Enter FirstName"/>
+									  <label for="firstName">First name</label>
+									  <input type="text" class="form-control" th:value="${user.firstName}" name="firstName" id="firstName" aria-describedby="fNameHelp" placeholder="Enter FirstName"/>
 								   </div>
 									<div class="form-group">
-										<label for="inputLastName">Last name</label>
-										<input type="text" class="form-control" id="inputLastName" aria-describedby="lNameHelp" placeholder="Enter LastName"/>
+										<label for="lastName">Last name</label>
+										<input type="text" class="form-control" name="lastName" id="lastName" aria-describedby="lNameHelp" placeholder="Enter LastName"/>
 									</div>
 									<div class="form-group">
-										<label for="inputPhoneNumber">Phone number</label>
-										<input type="text" class="form-control" id="inputPhoneNumber" aria-describedby="phoneHelp" placeholder="Enter PhoneNumber"/>
+										<label for="phone">Phone number</label>
+										<input type="text" class="form-control"  name="phone" id="phone" aria-describedby="phoneHelp" placeholder="Enter PhoneNumber"/>
 									</div>
 					
 									 <div class="form-group">
-										<label for="inputEmail">Email</label>
-										<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email"/>
+										<label for="email">Email</label>
+										<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter Email"/>
 									</div>
 									<div class="form-group">
-										<label for="inputUserName">User name</label>
-										<input type="text" class="form-control" id="inputUserName" aria-describedby="uNameHelp" placeholder="Enter UserName"/>
+										<label for="userName">User name</label>
+										<input type="text" class="form-control" name="username" id="username" aria-describedby="uNameHelp" placeholder="Enter UserName"/>
 									</div>
 									 <div class="form-group">
-										<label for="inputPassword">Password</label>
-										<input type="password" class="form-control" id="inputPassword" aria-describedby="passwordlHelp" placeholder="Enter Password"/>
+										<label for="password">Password</label>
+										<input type="password" class="form-control" name="password"  id="password" aria-describedby="passwordlHelp" placeholder="Enter Password"/>
 									</div>
 									<div style="text-align: right">
 										<button type="submit" class="btn btn-success">Confirm</button>
