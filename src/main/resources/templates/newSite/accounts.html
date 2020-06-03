@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 	<title>Cryptocurrency - Landing Page Template</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Cryptocurrency Landing Page Template">
-	<meta name="keywords" content="cryptocurrency, unica, creative, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8"/>
+	<meta name="description" content="Cryptocurrency Landing Page Template"/>
+	<meta name="keywords" content="cryptocurrency, unica, creative, html"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -36,18 +36,18 @@
 		<header class="header-section clearfix">
 			<div class="container-fluid">
 				<a href="index.html">
-					<img src="img/logoHome.png" alt="" class="siteLogo">
+					<img src="img/logoHome.png" alt="" class="siteLogo"/>
 				</a>
 				<div class="responsive-bar"><i class="fa fa-bars"></i></div>
 				<a href="" class="user"><i class="fa fa-user"></i></a>
 				<a th:href="@{/logout}" class="site-btn">Log Out</a>
 				<nav class="main-menu">
 					<ul class="menu-list">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="accounts.html">Primary Account</a></li>
-						<li><a href="transfer.html">Transfer</a></li>
-						<li><a href="replenishment.html">Replenishment</a></li>
-						<li><a href="feedback.html">Feedback</a></li>
+						<li><a th:href="@{/userFront}">Home</a></li>
+						<li><a th:href="@{/account}">Primary Account</a></li>
+						<li><a th:href="@{/transfer}">Transfer</a></li>
+						<li><a th:href="@{/replenishment}">Replenishment</a></li>
+						<li><a th:href="@{/feedback}">Feedback</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -61,7 +61,7 @@
 					<div class="balance">
 						<h3 style="color: aliceblue;">Primary Balance: 1000 UAH</h3>
 					</div>
-					<br>
+					<br/>
 					<table class="table table-hover center">
 						<thead class="table-active">
 						  <tr>
@@ -88,7 +88,7 @@
 		<div class="container">
 			<div class="row spad">
 				<div class="col-md-6 col-lg-3 footer-widget">
-					<img src="img/logo.png" class="mb-4" alt="">
+					<img src="img/logo.png" class="mb-4" alt=""/>
 					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum.</p>
 					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -127,8 +127,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<div class="footer-bottom">
 				<div class="row">
 					<div class="col-lg-4 store-links text-center text-lg-left pb-3 pb-lg-0">
-						<a href=""><img src="img/appstore.png" alt="" class="mr-2"></a>
-						<a href=""><img src="img/playstore.png" alt=""></a>
+						<a href=""><img src="img/appstore.png" alt="" class="mr-2"/></a>
+						<a href=""><img src="img/playstore.png" alt=""/></a>
 					</div>
 					<div class="col-lg-8 text-center text-lg-right">
 						<ul class="footer-nav">

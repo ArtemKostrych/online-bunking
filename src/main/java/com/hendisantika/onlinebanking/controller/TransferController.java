@@ -38,6 +38,11 @@ public class TransferController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(method = RequestMethod.GET)
+    public String getTransfer(Model model) {
+        return "newSite/transfer";
+    }
+
     @RequestMapping(value = "/betweenAccounts", method = RequestMethod.GET)
     public String betweenAccounts(Model model) {
         model.addAttribute("transferFrom", "");
