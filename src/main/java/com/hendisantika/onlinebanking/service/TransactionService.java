@@ -35,6 +35,8 @@ public interface TransactionService {
 
         void betweenAccountsTransfer(String transferFrom, int transferTo, String amount, PrimaryAccount primaryAccount);
 
+        void replenish(String mobile, int amount, PrimaryAccount primaryAccount);
+
         List<Recipient> findRecipientList(Principal principal);
 
         Recipient saveRecipient(Recipient recipient);

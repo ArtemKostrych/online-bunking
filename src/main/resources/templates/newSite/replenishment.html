@@ -60,9 +60,12 @@
 				<div class="row">
 					<div class="col-md-6 hero-text">
                         <h2>Recharge here</h2>
-                        <form class="hero-subscribe-from">
-                            <input type="text" placeholder="Enter amount"/>
-                            <input type="text" placeholder="Enter your phone number"/>
+                        <form class="hero-subscribe-from" th:action="@{/replenishment/replenish}" method="post">
+							<div class="bg-danger" th:if="${param.error}">
+								Invalid amount.
+							</div>
+                            <input type="text" placeholder="Enter amount" name ="amount"/>
+                            <input type="text" placeholder="Enter your phone number" name ="phoneNumber"/>
                             <div>
                                 <button class="repl-btn sb-gradients">Replenish</button>
                             </div>

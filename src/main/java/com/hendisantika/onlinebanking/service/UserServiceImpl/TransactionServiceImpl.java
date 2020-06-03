@@ -94,9 +94,20 @@ public class TransactionServiceImpl implements TransactionService {
         primaryAccountDao.save(primaryAccount);
         Date date = new Date();
 
-        PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Between account transfer from " + transferFrom + " to " + transferTo, "Account", "Finished", Double.parseDouble(amount), primaryAccount.getAccountBalance(), primaryAccount);
+        PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Between account transfer to " + transferTo, "Account", "Finished", Double.parseDouble(amount), primaryAccount.getAccountBalance(), primaryAccount);
             primaryTransactionDao.save(primaryTransaction);
 
+    }
+
+    @Override
+    public void replenish(String mobile,  int amount, PrimaryAccount primaryAccount){
+        primaryAccount.setAccountBalance(primaryAccount.getAccountBalance().subtract(new BigDecimal(amount)));
+        primaryAccountDao.save(primaryAccount);
+
+        Date date = new Date();
+
+        PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Replenish Mobile phone " + mobile, "Account", "Finished", amount, primaryAccount.getAccountBalance(), primaryAccount);
+        primaryTransactionDao.save(primaryTransaction);
     }
 
     public List<Recipient> findRecipientList(Principal principal) {
