@@ -1,87 +1,92 @@
-(function ($) {
-    $.toggleShowPassword = function (options) {
-        var settings = $.extend({
-            field: "#password",
-            control: "#toggle_show_password",
-        }, options);
-
-        var control = $(settings.control);
-        var field = $(settings.field);
-
-        control.bind('click', function () {
-            if (control.is(':checked')) {
-                field.attr('type', 'text');
-            } else {
-                field.attr('type', 'password');
-            }
-        })
-    };
-
-    $.transferDisplay = function () {
-        $("#transferFrom").change(function () {
-            if ($("#transferFrom").val() == 'Primary') {
-                $('#transferTo').val('Savings');
-            } else if ($("#transferFrom").val() == 'Savings') {
-                $('#transferTo').val('Primary');
-            }
-        });
-
-        $("#transferTo").change(function () {
-            if ($("#transferTo").val() == 'Primary') {
-                $('#transferFrom').val('Savings');
-            } else if ($("#transferTo").val() == 'Savings') {
-                $('#transferFrom').val('Primary');
-            }
-        });
-    };
+/* =================================
+------------------------------------
+	Cryptocurrency - Landing Page Template
+	Version: 1.0
+ ------------------------------------ 
+ ====================================*/
 
 
-}(jQuery));
+'use strict';
 
-$(document).ready(function () {
-    var confirm = function () {
-        bootbox.confirm({
-            title: "Appointment Confirmation",
-            message: "Do you really want to schedule this appointment?",
-            buttons: {
-                cancel: {
-                    label: '<i class="fa fa-times"></i> Cancel'
-                },
-                confirm: {
-                    label: '<i class="fa fa-check"></i> Confirm'
-                }
-            },
-            callback: function (result) {
-                if (result == true) {
-                    $('#appointmentForm').submit();
-                } else {
-                    console.log("Scheduling cancelled.");
-                }
-            }
-        });
-    };
 
-    $.toggleShowPassword({
-        field: '#password',
-        control: "#showPassword"
-    });
-
-    $.transferDisplay();
-
-    $(".form_datetime").datetimepicker({
-        format: "yyyy-mm-dd hh:mm",
-        autoclose: true,
-        todayBtn: true,
-        startDate: "2013-02-14 10:00",
-        minuteStep: 10
-    });
-
-    $('#submitAppointment').click(function () {
-        confirm();
-    });
+$(window).on('load', function() {
+	/*------------------
+		Preloder
+	--------------------*/
+	$(".loader").fadeOut(); 
+	$("#preloder").delay(400).fadeOut("slow");
 
 });
 
+(function($) {
+
+	/*------------------
+		Navigation
+	--------------------*/
+	$('.responsive-bar').on('click', function(event) {
+		$('.main-menu').slideToggle(400);
+		event.preventDefault();
+	});
 
 
+	/*------------------
+		Background set
+	--------------------*/
+	$('.set-bg').each(function() {
+		var bg = $(this).data('setbg');
+		$(this).css('background-image', 'url(' + bg + ')');
+	});
+
+	
+	/*------------------
+		Review
+	--------------------*/
+	var review_meta = $(".review-meta-slider");
+    var review_text = $(".review-text-slider");
+
+
+    review_text.on('changed.owl.carousel', function(event) {
+		review_meta.trigger('next.owl.carousel');
+	});
+
+	review_meta.owlCarousel({
+		loop: true,
+		nav: false,
+		dots: true,
+		items: 3,
+		center: true,
+		margin: 20,
+		autoplay: true,
+		mouseDrag: false,
+	});
+
+
+	review_text.owlCarousel({
+		loop: true,
+		nav: true,
+		dots: false,
+		items: 1,
+		margin: 20,
+		autoplay: true,
+		navText: ['<i class="ti-angle-left"><i>', '<i class="ti-angle-right"><i>'],
+		animateOut: 'fadeOutDown',
+    	animateIn: 'fadeInDown',
+	});
+
+
+
+	 /*------------------
+		Contact Form
+	--------------------*/
+    $(".check-form").focus(function () {
+        $(this).next("span").addClass("active");
+    });
+    $(".check-form").blur(function () {
+        if ($(this).val() === "") {
+            $(this).next("span").removeClass("active");
+        }
+    });
+
+
+})(jQuery);
 
