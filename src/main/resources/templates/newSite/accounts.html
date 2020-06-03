@@ -75,7 +75,14 @@
 						  </tr>
 						</thead>
 						<tbody>
-						 
+						<tr data-th-each="primaryTransaction : ${primaryTransactionList}">
+							<td data-th-text="${primaryTransaction.date}"/>
+							<td data-th-text="${primaryTransaction.description}"/>
+							<td data-th-text="${primaryTransaction.type}"/>
+							<td data-th-text="${primaryTransaction.status}"/>
+							<td data-th-text="${primaryTransaction.amount}"/>
+							<td data-th-text="${primaryTransaction.availableBalance}"/>
+						</tr>
 						</tbody>
 					  </table>
 				</div>

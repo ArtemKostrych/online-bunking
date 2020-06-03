@@ -15,16 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.security.Principal;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * Project : online-banking
- * User: hendisantika
- * Email: hendisantika@gmail.com
- * Telegram : @hendisantika34
- * Date: 04/09/18
- * Time: 06.32
- * To change this template use File | Settings | File Templates.
- */
+
 @Controller
 @RequestMapping("/account")
 public class AccountController {
@@ -40,9 +31,12 @@ public class AccountController {
 
     @GetMapping
     public String getAccount(Principal principal, Model model) {
+        List<PrimaryTransaction> primaryTransactionList = transactionService.findPrimaryTransactionList(principal.getName());
+
         User user = userService.findByUsername(principal.getName());
         PrimaryAccount primaryAccount = user.getPrimaryAccount();
 
+        model.addAttribute("primaryTransactionList", primaryTransactionList);
         model.addAttribute("primaryAccount", primaryAccount);
         return "newSite/accounts";
     }
