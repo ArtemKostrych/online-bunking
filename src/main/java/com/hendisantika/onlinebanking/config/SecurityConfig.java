@@ -43,7 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/contact/**",
             "/error/**/*",
             "/console/**",
-            "/signup"
+            "/signup",
+            "/login",
+            "/img/***"
     };
     @Autowired
     private UserSecurityService userSecurityService;
