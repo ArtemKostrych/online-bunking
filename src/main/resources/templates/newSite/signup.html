@@ -40,18 +40,18 @@
 					<div class="container" style="margin-bottom: 100px;">
 						<div class="row" style="justify-content: center; align-items: center;">
 							<div class="col-4">
-								<form id="user" method="post" th:action="@{/signup}">
+								<form id="user" name="registration" onSubmit="">
 								   <div class="form-group" style="margin-top: 70px;">
 									  <label for="firstName">First name</label>
-									  <input type="text" class="form-control" th:value="${user.firstName}" name="firstName" id="firstName" aria-describedby="fNameHelp" placeholder="Enter FirstName"/>
+									  <input type="text" class="form-control" th:value="${user.firstName}" name="firstName" id="firstName" minlength="5" maxlength="16" aria-describedby="fNameHelp" placeholder="Enter FirstName"/>
 								   </div>
 									<div class="form-group">
 										<label for="lastName">Last name</label>
-										<input type="text" class="form-control" name="lastName" id="lastName" aria-describedby="lNameHelp" placeholder="Enter LastName"/>
+										<input type="text" class="form-control" name="lastName" id="lastName" minlength="5" maxlength="16" aria-describedby="lNameHelp" placeholder="Enter LastName"/>
 									</div>
 									<div class="form-group">
 										<label for="phone">Phone number</label>
-										<input type="text" class="form-control"  name="phone" id="phone" aria-describedby="phoneHelp" placeholder="Enter PhoneNumber"/>
+										<input type="tel" class="form-control"  name="phone" id="phone" minlength="15" maxlength="16" aria-describedby="phoneHelp" placeholder="Enter PhoneNumber"/>
 									</div>
 					
 									 <div class="form-group">
@@ -60,11 +60,11 @@
 									</div>
 									<div class="form-group">
 										<label for="userName">User name</label>
-										<input type="text" class="form-control" name="username" id="username" aria-describedby="uNameHelp" placeholder="Enter UserName"/>
+										<input type="text" class="form-control" name="username" id="username" minlength="5" maxlength="16" aria-describedby="uNameHelp" placeholder="Enter UserName"/>
 									</div>
 									 <div class="form-group">
 										<label for="password">Password</label>
-										<input type="password" class="form-control" name="password"  id="password" aria-describedby="passwordlHelp" placeholder="Enter Password"/>
+										<input type="password" class="form-control" name="password"  id="password" minlength="8" maxlength="16" aria-describedby="passwordlHelp" placeholder="Enter Password"/>
 									</div>
 									<div style="text-align: right">
 										<button type="submit" class="btn btn-success">Confirm</button>
@@ -84,5 +84,6 @@
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/validation.js"></script>
 </body>
 </html>
