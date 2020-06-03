@@ -39,7 +39,11 @@ public class AccountController {
     private TransactionService transactionService;
 
     @GetMapping
-    public String getAccount() {
+    public String getAccount(Principal principal, Model model) {
+        User user = userService.findByUsername(principal.getName());
+        PrimaryAccount primaryAccount = user.getPrimaryAccount();
+
+        model.addAttribute("primaryAccount", primaryAccount);
         return "newSite/accounts";
     }
 

@@ -55,9 +55,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 hero-text">
-				<form class="transfer-subscribe-from">
-					<input type="text" placeholder="Enter recipient"/>
-					<input type="text" placeholder="Enter amount"/>
+				<form class="transfer-subscribe-from" th:action="@{/transfer/betweenAccounts}" method="post">
+					<div class="bg-danger" th:if="${param.error}">
+						Invalid amount.
+					</div>
+					<input type="text" placeholder="Enter recipient" name="transferTo"/>
+					<input type="text" placeholder="Enter amount" name="amount"/>
 					<div>
 						<button class="repl-btn sb-gradients">Transfer</button>
 					</div>

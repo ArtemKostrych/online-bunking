@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.List;
 
@@ -29,7 +30,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping("/transfer")
+@RequestMapping("transfer")
 public class TransferController {
 
     @Autowired
@@ -55,16 +56,18 @@ public class TransferController {
     @RequestMapping(value = "/betweenAccounts", method = RequestMethod.POST)
     public String betweenAccountsPost(
             @ModelAttribute("transferFrom") String transferFrom,
-            @ModelAttribute("transferTo") String transferTo,
+            @ModelAttribute("transferTo") int transferTo,
             @ModelAttribute("amount") String amount,
             Principal principal
     ) throws Exception {
         User user = userService.findByUsername(principal.getName());
         PrimaryAccount primaryAccount = user.getPrimaryAccount();
-        SavingsAccount savingsAccount = user.getSavingsAccount();
-        transactionService.betweenAccountsTransfer(transferFrom, transferTo, amount, primaryAccount, savingsAccount);
+        if (primaryAccount.getAccountBalance().compareTo(new BigDecimal(amount))<0) {
+            return "redirect:/transfer?error";
+        }
+        transactionService.betweenAccountsTransfer(transferFrom, transferTo, amount, primaryAccount);
 
-        return "redirect:/userFront";
+        return "redirect:/account";
     }
 
     @RequestMapping(value = "/recipient", method = RequestMethod.GET)
