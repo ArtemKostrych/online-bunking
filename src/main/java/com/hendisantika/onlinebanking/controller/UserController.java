@@ -23,25 +23,24 @@ import java.security.Principal;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/profile")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/profile")
+    @GetMapping
     public String profile(Principal principal, Model model) {
         User user = userService.findByUsername(principal.getName());
 
         model.addAttribute("user", user);
 
-        return "profile";
+        return "newSite/myprofile";
     }
 
-    @PostMapping("/profile")
-    public String profilePost(@ModelAttribute("user") User newUser, Model model) {
-        User user = userService.findByUsername(newUser.getUsername());
-        user.setUsername(newUser.getUsername());
+    @PostMapping("/edit")
+    public String profilePost(@ModelAttribute("user") User newUser, Model model, Principal principal) {
+        User user = userService.findByUsername(principal.getName());
         user.setFirstName(newUser.getFirstName());
         user.setLastName(newUser.getLastName());
         user.setEmail(newUser.getEmail());
@@ -51,7 +50,7 @@ public class UserController {
 
         userService.saveUser(user);
 
-        return "profile";
+        return "newSite/myprofile";
     }
 
 
