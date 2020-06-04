@@ -73,23 +73,23 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-7">
-					<form class="contact-form">
+					<form class="contact-form" th:action="@{/feedback/addFeedback}"  method="post">
 						<div class="row">
 							<div class="col-md-12">
-								<div class="form-group">
-									<textarea placeholder="Tell us about your impression!"></textarea>
+								<div class="form-group" >
+									<input type="text" placeholder="Tell us about your impression!" name="text"></input>
 								</div>
 								<div class="txt-center">
 										<div class="rating">
-											<input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+											<input id="star5" type="radio" value="5" name="mark" class="radio-btn hide" />
 											<label for="star5" >☆</label>
-											<input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+											<input id="star4"  type="radio" value="4" name="mark" class="radio-btn hide" />
 											<label for="star4" >☆</label>
-											<input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+											<input id="star3" type="radio" value="3" name="mark" class="radio-btn hide" />
 											<label for="star3" >☆</label>
-											<input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+											<input id="star2"  type="radio" value="2" name="mark" class="radio-btn hide" />
 											<label for="star2" >☆</label>
-											<input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+											<input id="star1"  type="radio" value="1" name="mark" class="radio-btn hide" />
 											<label for="star1" >☆</label>
 											<div class="clear"></div>
 										</div>
@@ -112,40 +112,24 @@
 				<div class="col-lg-8 push-8">
 					<img src="img/quote.png" alt="" class="quote mb-5"/>
 					<div class="review-text-slider owl-carousel">
+						<th:block th:each="f : ${feedback}">
 						<div class="review-text">
-							<p>"Bitcoin is exciting because it shows how cheap it can be. Bitcoin is better than currency in that you don’t have to be physically in the same place and, of course, for large transactions, currency can get pretty inconvenient.”</p>
+							<p><span th:text="${f.text}"/></p>
 						</div>
-						<div class="review-text">
-							<p>"Bitcoin is exciting because it shows how cheap it can be. Bitcoin is better than currency in that you don’t have to be physically in the same place and, of course, for large transactions, currency can get pretty inconvenient.”</p>
-						</div>
-						<div class="review-text">
-							<p>"Bitcoin is exciting because it shows how cheap it can be. Bitcoin is better than currency in that you don’t have to be physically in the same place and, of course, for large transactions, currency can get pretty inconvenient.”</p>
-						</div>
+						</th:block>
 					</div>
 				</div>
 				<div class="col-lg-4 pr-0 pull-3">
 					<div class="review-meta-slider owl-carousel pt-5">
-						<div class="author-meta">
-							<div class="author-avatar set-bg" data-setbg="img/review/1.jpg"></div>
-							<div class="author-name">
-								<h4>Aaron Ballance</h4>
-								<p>Ceo Bitcoin</p>
+						<th:block th:each="f : ${feedback}">
+							<div class="author-meta">
+								<div class="author-name">
+									<h4><span th:text="${f.user.username}"/></h4>
+									<p><span th:text="${f.user.email}"/></p>
+								</div>
+								<span th:text="${f.mark}"/> <label for="star4" >☆</label>
 							</div>
-						</div>
-						<div class="author-meta">
-							<div class="author-avatar set-bg" data-setbg="img/review/2.jpg"></div>
-							<div class="author-name">
-								<h4>Jackson Nash</h4>
-								<p>Head of Design</p>
-							</div>
-						</div>
-						<div class="author-meta">
-							<div class="author-avatar set-bg" data-setbg="img/review/3.jpg"></div>
-							<div class="author-name">
-								<h4>Katy Abrams</h4>
-								<p>Product Manager</p>
-							</div>
-						</div>
+						</th:block>
 					</div>
 				</div>
 			</div>
