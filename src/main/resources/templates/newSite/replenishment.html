@@ -62,7 +62,7 @@
 					<div class="col-md-6 hero-text">
                         <h2>Recharge here</h2>
                         <form class="hero-subscribe-from" th:action="@{/replenishment/replenish}" method="post">
-							<div class="bg-danger" th:if="${param.error}">
+							<div class="bg-danger repl-btn" style="margin-bottom: 20px;" th:if="${param.error}">
 								Invalid amount.
 							</div>
                             <input type="text" placeholder="Enter amount" name ="amount"/>

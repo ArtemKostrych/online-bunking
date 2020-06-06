@@ -40,8 +40,8 @@
 					<div class="container" style="margin-bottom: 100px;">
 						<div class="row" style="justify-content: center; align-items: center;">
 							<div class="col-4">
-								<form id="user" method="post" th:action="@{/signup}" name="registration" onSubmit="">
-								   <div class="form-group" style="margin-top: 70px;">
+								<form class="frame" id="user" name="registration" onSubmit="">
+								   <div class="form-group">
 									  <label for="firstName">First name</label>
 									  <input type="text" class="form-control" th:value="${user.firstName}" name="firstName" id="firstName" minlength="5" maxlength="16" aria-describedby="fNameHelp" placeholder="Enter FirstName"/>
 								   </div>
